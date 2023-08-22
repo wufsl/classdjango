@@ -3,25 +3,34 @@
 
 {% block content %}
 
-    <div style="height: 20rem; background-color: #38df81; border-radius: 1rem; margin: 2rem;">
-         <h1>
-             testing
+    <div style="border-radius: 1rem; margin: 2rem; text-align: center">
+         <h1 style="font-family: 'lobster', cursive;"> <!--cursive는 lobster를 못가져와서 사용 못하면 사용하라는 것 -->
+             Hello World LIST!
          </h1>
         <!-- get은 주소창에 넣으면 자동으로 보내지고 post는 따로 설정 필요 -->
         <!-- post쓰기 위해 html안에 form 만들어줘야함 -->
         <!-- form은 서버한테 보내는 요청 명세서 같은 것, 글, 파일 첨부나 같은 모든 데이터들이 포스트 바디 안에 들어간다고 했는데 그것이 form안에 들어갈것임 -->
+
         <form action="/account/hello_world/" method="post">
             {% csrf_token %}
+            <div>
+              <input type="text" name="hello_world_input">
+                <!--input이름을 가진 데이터를 text에 담아서 서버로 보냄 -->
+            </div>
+            <div>
             <input type="submit" class="btn btn-primary" value="POST">
             <!-- btn 이랑 btn-primary는 부트스트랩안에 있는 클래스 중 하나로, 둘 다 적용하면 primary 색을 가진 버튼이 만들어짐-->
             <!-- 장고를 이용해서 post method를 사용해서 서버에 요청을 보낼때는 항상 csrf 토큰이라는 것을 항상 폼안에 명시해줘야함 -->
             <!-- csrf 토큰 구문이 알아서 자동 생성해주고, 이는 장고에서 제공하는 보안기능들 중 하나이고 이것을 꼭 적어줘야만 기능함 -->
+            </div>
 
         </form>
 
+        {% if hello_world_output %}
         <h1>
-            {{ text }}
+            {{ hello_world_output.text }}
         </h1>
+        {% endif %}
     </div>
 
 {% endblock %}

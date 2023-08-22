@@ -1,3 +1,6 @@
+<!--뭔가 가져오는 것 head.html-->
+<!--static관련 파일 가져오기 위한 구문-->
+{% load static %}
 <head>
     <meta charset="UTF-8">
     <title>Journey</title>
@@ -9,4 +12,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+
+    <!-- DEFAULT CSS LINK  -->
+    <link rel="stylesheet" type="text/css" href="{% static 'base.css' %}">
+    <!--해당하는 base.css에 필요한 경로를 알아서 렌더링해서 실제 브라우저에다 넘겨줌 -->
 </head>
